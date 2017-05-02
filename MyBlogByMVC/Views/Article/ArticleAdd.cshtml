@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Scripts/uEditor/themes/default/css/umeditor.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/uEditor/umeditor.config.js"></script>
+    <script src="~/Scripts/uEditor/umeditor.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>增加文章</title>
+</head>
+<body>
+
+    <form id="form1" method="post" action="AddArticle">
+        <select name="type">
+            <option value="1">js</option>
+            <option value="2">css</option>
+            <option value="3">github</option>
+            <option value="4">nodejs</option>
+            <option value="5">c#</option>
+            <option value="6">php</option>
+        </select>
+        <input type="text" name="title">
+        <script type="text/plain" id="myEditor" name="content">
+        </script>
+        <input type="submit" value="提交"/>
+    </form>
+    <script>
+        window.onload = function () {
+            var um = UM.getEditor('myEditor');
+        };
+    </script>
+</body>
+</html>

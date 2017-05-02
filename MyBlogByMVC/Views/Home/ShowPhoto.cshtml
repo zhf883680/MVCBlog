@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "MyPhoto";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+<script src="~/Scripts/vue.min.js?v=0"></script>
+<script src="~/Scripts/vue-lazyload.js"></script>
+<script src="~/Scripts/axios.js"></script>
+
+<script type="text/javascript">
+    Vue.use(VueLazyload, {
+        error: '/Scripts/layer/skin/default/loading-2.gif',
+        loading: '/Scripts/layer/skin/default/loading-2.gif',
+        try: 3 // default 1
+    })
+</script>
+<div id="vue">
+
+</div>
+<script id="tmpl" type="text/vue">
+    <div>
+        <div class="container" v-for="item in items">
+            <img src="/Img/dog.jpg" class="img-responsive" alt="图片" v-lazy="item.Path" style="min-height:60%;min-width:80%">
+        </div>
+    </div>
+
+</script>
+<script type="text/javascript">
+    new Vue({
+        el: '#vue',
+        template: document.querySelector('#tmpl').innerHTML,
+        replace: false,
+        data: {
+            items: new Array
+        },
+        mounted: function () {
+            var $this = this;
+
+            //jq写法 $.post("请求的页面地址",{a:'a',b:'b'},function(data){ //回调函数   data为该页面返回的值   }) //a,b为传递的参数
+            //$.ajax({
+            //    type: "post",
+            //    url: "XXXX",
+            //    data: "name=John&location=Boston",//传递的数值
+            //    success: function (msg) {  //请求成功时候返回的值 msg  
+            //        alert("Data Saved: " + msg);
+            //    }
+            //});
+            //用axios这个js插件发post请求
+            axios.post("/Home/GetPhoto").then(function (data) {
+                $this.items = data.data;
+            })
+        }
+    })
+</script>
+
+

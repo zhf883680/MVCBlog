@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "后台";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<link href="~/Scripts/Easyui/themes/icon.css" rel="stylesheet" />
+<link href="~/Scripts/Easyui/themes/default/easyui.css" rel="stylesheet" />
+<div id="function">
+    <a href="#" class="easyui-linkbutton" iconcls="icon-add" plain="true">增加</a>
+</div>
+<table id="dg" toolbar="#function" style="margin-right:20px"></table>
+<script src="~/Scripts/Easyui/jquery.easyui.min.js"></script>
+<script src="~/Scripts/jsonToDate.js"></script>
+<script>
+    $(function () {
+        $('#dg').datagrid({
+            url: 'Admin/List',
+            striped: true,
+            loadMsg: "loading",
+            queryParams: {
+                type: $.getUrlParam("type")
+            },
+            singleSelect: true, //是否单选
+            pagination: true, //显示分页
+            pageSize: 20, //页大小
+            pageList: [10, 20, 30],
+            columns: [[
+                { field: 'No', title: '序号', width: 50 },
+                {
+                    field: 'AddTime', title: '增加时间', width: 120, formatter: function (value, row, index) {
+                        //格式化时间显示
+                        return Common.formatterDateTime(value);
+                    }
+                },
+                { field: 'Title', title: '标题', width: 200 },
+                { field: 'Content', title: '内容', width: 500 },
+                {
+                    field: 'Action', title: '操作', width: 100, formatter: function (value, row, index) {
+                        //传递点击时候的行数
+                        var a = '<a href="#" onclick="modify(' + row.Id + ',' + index + ');">修改</a> ';
+                        var b = '<a href="#" onclick="delete(' + row.Id + ',' + index + ');">删除</a> ';
+                        return a + b;
+                    }
+                }
+            ]]
+        });
+        $('.panel-body').width($('.panel-body').width() - 2);
+    })
+</script>
