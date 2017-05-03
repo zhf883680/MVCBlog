@@ -1,10 +1,25 @@
 ﻿@{
     ViewBag.Title = "后台";
     Layout = "~/Views/_LayoutPage.cshtml";
+    var link = string.Empty;
+    switch (Convert.ToInt32(Request.QueryString[0]))
+    {
+        case 1: link = "js"; break;
+        case 2: link = "html"; break;
+        case 3: link = "github"; break;
+        case 4: link = "Node.Js"; break;
+        case 5: link = "C#"; break;
+        case 6: link = "php"; break;
+        case 7: link = "html"; break;
+    }
 }
 
 <link href="~/Scripts/Easyui/themes/icon.css" rel="stylesheet" />
 <link href="~/Scripts/Easyui/themes/default/easyui.css" rel="stylesheet" />
+<ol class="breadcrumb">
+    <li><a href="#">主页</a></li>
+    <li class="active">@link</li>
+</ol>
 <div id="function">
     <a href="javascript:" class="easyui-linkbutton" iconcls="icon-add" plain="true" id="btnAdd">增加</a>
 </div>
@@ -49,7 +64,7 @@
        $('.panel-body').width($('.panel-body').width() - 2);
        $('#btnAdd').click(function () {
            //增加
-           location.href = "admin/Edit?Id=" + no + "&type=" + type;
+           location.href = "admin/Create?type=" + $.getUrlParam("type");
 
        })
     })
@@ -57,10 +72,12 @@
         layer.confirm('确定要删除这个文章吗？', {
             btn: ['确定', '取消'] //按钮
         }, function () {
+            //关闭弹窗
+            layer.closeAll();
             //确定
-            $.post("admin/DeleteConfirmed", { Id: no }, function (data) {
+            $.post("admin/Delete", { Id: no }, function (data) {
                 if (data == 1) {
-                    layer, msg("删除成功");
+                    layer.msg("删除成功");
                     //移除该列
                     dg.deleteRow(index);
                 }

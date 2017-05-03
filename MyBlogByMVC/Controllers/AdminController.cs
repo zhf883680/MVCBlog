@@ -11,7 +11,7 @@ using System.Web.Script.Serialization;
 
 namespace MyBlogByMVC.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : Common.BaseController
     {
         private MyBlogEntities db = new MyBlogEntities();
 
@@ -63,11 +63,12 @@ namespace MyBlogByMVC.Controllers
         [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "No,Title,Content,AddTime,ViewCount,R1,R2,R3,type")] Article article)
         {
+
             if (ModelState.IsValid)
             {
                 db.Article.Add(article);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { type = article.type });
             }
 
             return View(article);
@@ -100,7 +101,7 @@ namespace MyBlogByMVC.Controllers
             {
                 db.Entry(article).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { type = article.type });
             }
             return View(article);
         }
@@ -122,8 +123,7 @@ namespace MyBlogByMVC.Controllers
 
         // POST: /Admin/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public int DeleteConfirmed(int id)
+        public int Delete(int id)
         {
             Article article = db.Article.Find(id);
             db.Article.Remove(article);
@@ -139,5 +139,6 @@ namespace MyBlogByMVC.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

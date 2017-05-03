@@ -191,6 +191,7 @@
     <Compile Include="Comment.cs">
       <DependentUpon>MyBlog.tt</DependentUpon>
     </Compile>
+    <Compile Include="Common\Base.cs" />
     <Compile Include="Common\Common.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
@@ -382,10 +383,10 @@
     <Content Include="Scripts\uEditor\umeditor.config.js" />
     <Content Include="Scripts\uEditor\umeditor.js" />
     <Content Include="Scripts\uEditor\umeditor.min.js" />
-    <Content Include="static\css\app.3ee77aa7ad73cb8f8e4dfdfa7eda9be8.css" />
-    <Content Include="static\js\app.3cc1a2a478b3d348031f.js" />
-    <Content Include="static\js\manifest.ea2b3d8f4bd59582eeb8.js" />
-    <Content Include="static\js\vendor.1f61b6cee116c4ac8ce2.js" />
+    <Content Include="static\css\app.f12905ff4736a8425c3463bd6c212410.css" />
+    <Content Include="static\js\app.781a7588293054f49bf8.js" />
+    <Content Include="static\js\manifest.c4151d2eaf6b86b4fde3.js" />
+    <Content Include="static\js\vendor.99303e89811b3abdfb59.js" />
     <Content Include="static\photoswipeApi.js" />
     <Content Include="static\PhotoSwipe\default-skin\default-skin.css" />
     <Content Include="static\PhotoSwipe\default-skin\default-skin.png" />
@@ -453,17 +454,17 @@
     <Content Include="Scripts\uEditor\third-party\mathquill\font\Symbola.otf" />
     <Content Include="Scripts\uEditor\third-party\mathquill\font\Symbola.ttf" />
     <Content Include="Scripts\uEditor\third-party\mathquill\font\Symbola.woff" />
-    <Content Include="static\css\app.3ee77aa7ad73cb8f8e4dfdfa7eda9be8.css.map" />
-    <Content Include="static\fonts\element-icons.b02bdc1.ttf" />
-    <Content Include="static\js\app.3cc1a2a478b3d348031f.js.map" />
-    <Content Include="static\js\manifest.ea2b3d8f4bd59582eeb8.js.map" />
-    <Content Include="static\js\vendor.1f61b6cee116c4ac8ce2.js.map" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Scripts\bootstrap.min.css" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="static\css\app.f12905ff4736a8425c3463bd6c212410.css.map" />
+    <Content Include="static\fonts\element-icons.b02bdc1.ttf" />
+    <Content Include="static\js\app.781a7588293054f49bf8.js.map" />
+    <Content Include="static\js\manifest.c4151d2eaf6b86b4fde3.js.map" />
+    <Content Include="static\js\vendor.99303e89811b3abdfb59.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fonts\" />

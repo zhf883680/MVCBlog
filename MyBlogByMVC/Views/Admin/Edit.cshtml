@@ -13,6 +13,7 @@
         case 6: link = "php"; break;
         case 7: link = "html"; break;
         }
+    var content = Model.Content;
 }
 <link href="~/Scripts/uEditor/themes/default/css/umeditor.min.css" rel="stylesheet" />
 <script src="~/Scripts/uEditor/umeditor.config.js"></script>
@@ -45,7 +46,7 @@
         <div class="form-group">
             @Html.LabelForModel("内容", new { @class = "control-label col-md-1" })
             <div class="col-md-11">
-                <script type="text/plain" id="myEditor" name="content" style="min-width:800px">@Html.DisplayFor(model => model.Content)</script>
+                <script type="text/plain" id="myEditor" name="content" style="min-width:800px"></script>
             </div>
         </div>
         <div class="form-group">
@@ -54,9 +55,11 @@
             </div>
         </div>
     </div>
-}
-<script>
+    <script>
     window.onload = function () {
         var um = UM.getEditor('myEditor');
+        um.ready(function () { um.setContent("@Html.Raw(content)");})
+      
     };
 </script>
+}
