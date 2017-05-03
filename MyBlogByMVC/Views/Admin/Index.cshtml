@@ -6,14 +6,15 @@
 <link href="~/Scripts/Easyui/themes/icon.css" rel="stylesheet" />
 <link href="~/Scripts/Easyui/themes/default/easyui.css" rel="stylesheet" />
 <div id="function">
-    <a href="#" class="easyui-linkbutton" iconcls="icon-add" plain="true">增加</a>
+    <a href="javascript:" class="easyui-linkbutton" iconcls="icon-add" plain="true" id="btnAdd">增加</a>
 </div>
 <table id="dg" toolbar="#function" style="margin-right:20px"></table>
 <script src="~/Scripts/Easyui/jquery.easyui.min.js"></script>
 <script src="~/Scripts/jsonToDate.js"></script>
 <script>
+    var dg;
     $(function () {
-        $('#dg').datagrid({
+       dg= $('#dg').datagrid({
             url: 'Admin/List',
             striped: true,
             loadMsg: "loading",
@@ -34,16 +35,43 @@
                 },
                 { field: 'Title', title: '标题', width: 200 },
                 { field: 'Content', title: '内容', width: 500 },
+                { field: 'type', title: '类型',hidden:true, width: 500 },
                 {
                     field: 'Action', title: '操作', width: 100, formatter: function (value, row, index) {
                         //传递点击时候的行数
-                        var a = '<a href="#" onclick="modify(' + row.Id + ',' + index + ');">修改</a> ';
-                        var b = '<a href="#" onclick="delete(' + row.Id + ',' + index + ');">删除</a> ';
+                        var a = '<a href="javascript:" onclick="modify(' + row.No + ',' + row.type + ');">修改</a> ';
+                        var b = '<a href="javascript:" onclick="deleteArticle(' + row.No + ',' + index + ');">删除</a> ';
                         return a + b;
                     }
                 }
             ]]
         });
-        $('.panel-body').width($('.panel-body').width() - 2);
+       $('.panel-body').width($('.panel-body').width() - 2);
+       $('#btnAdd').click(function () {
+           //增加
+           location.href = "admin/Edit?Id=" + no + "&type=" + type;
+
+       })
     })
+    function deleteArticle(no, index) {
+        layer.confirm('确定要删除这个文章吗？', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            //确定
+            $.post("admin/DeleteConfirmed", { Id: no }, function (data) {
+                if (data == 1) {
+                    layer, msg("删除成功");
+                    //移除该列
+                    dg.deleteRow(index);
+                }
+            });
+        }, function () {
+            //取消
+            layer.closeAll();
+        });
+    }
+    function modify(no,type) {
+        //修改功能,页面跳转到信息界面   带参数
+        location.href = "admin/Edit?Id=" + no + "&type=" + type;
+    }
 </script>

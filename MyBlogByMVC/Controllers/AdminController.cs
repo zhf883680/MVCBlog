@@ -60,6 +60,7 @@ namespace MyBlogByMVC.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "No,Title,Content,AddTime,ViewCount,R1,R2,R3,type")] Article article)
         {
             if (ModelState.IsValid)
@@ -92,6 +93,7 @@ namespace MyBlogByMVC.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "No,Title,Content,AddTime,ViewCount,R1,R2,R3,type")] Article article)
         {
             if (ModelState.IsValid)
@@ -119,14 +121,14 @@ namespace MyBlogByMVC.Controllers
         }
 
         // POST: /Admin/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public int DeleteConfirmed(int id)
         {
             Article article = db.Article.Find(id);
             db.Article.Remove(article);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return 1;
         }
 
         protected override void Dispose(bool disposing)
