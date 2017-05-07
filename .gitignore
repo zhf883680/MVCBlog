@@ -49,6 +49,7 @@ Temporary Items
 #ignore set
 packages/*
 MyBlogByMVC.Tests/*
+MyBlogByMVC/MyBlogByMVC.zip
 MyBlogByMVC/Img/*
 MyBlogByMVC/obj/*
 MyBlogByMVC/bin/*

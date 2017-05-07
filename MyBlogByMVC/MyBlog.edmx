@@ -40,8 +40,15 @@
           <Key>
             <PropertyRef Name="No" />
           </Key>
-          <Property Name="No" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="No" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Path" Type="text" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Width" Type="int" />
+          <Property Name="Height" Type="int" />
+          <Property Name="AddTime" Type="datetime" />
+          <Property Name="R1" Type="int" />
+          <Property Name="R2" Type="text" />
+          <Property Name="R3" Type="int" />
         </EntityType>
         <EntityContainer Name="MyBlogModelStoreContainer">
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
@@ -60,7 +67,14 @@
           <EntitySet Name="Img" EntityType="Self.Img" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Img].[No] AS [No], 
-    [Img].[Path] AS [Path]
+    [Img].[Path] AS [Path], 
+    [Img].[Description] AS [Description], 
+    [Img].[Width] AS [Width], 
+    [Img].[Height] AS [Height], 
+    [Img].[AddTime] AS [AddTime], 
+    [Img].[R1] AS [R1], 
+    [Img].[R2] AS [R2], 
+    [Img].[R3] AS [R3]
     FROM [dbo].[Img] AS [Img]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
@@ -101,6 +115,13 @@
           </Key>
           <Property Name="No" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddTime" Type="DateTime" Precision="3" />
+          <Property Name="R1" Type="Int32" />
+          <Property Name="R2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="R3" Type="Int32" />
+          <Property Name="Width" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
         </EntityType>
         <EntityContainer Name="MyBlogEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Article" EntityType="Self.Article" />
@@ -145,6 +166,13 @@
           <EntitySetMapping Name="Img">
             <EntityTypeMapping TypeName="MyBlogModel.Img">
               <MappingFragment StoreEntitySet="Img">
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="R3" ColumnName="R3" />
+                <ScalarProperty Name="R2" ColumnName="R2" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="No" ColumnName="No" />
                 <ScalarProperty Name="Path" ColumnName="Path" />
               </MappingFragment>

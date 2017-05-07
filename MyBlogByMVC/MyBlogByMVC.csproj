@@ -197,6 +197,7 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -383,10 +384,10 @@
     <Content Include="Scripts\uEditor\umeditor.config.js" />
     <Content Include="Scripts\uEditor\umeditor.js" />
     <Content Include="Scripts\uEditor\umeditor.min.js" />
-    <Content Include="static\css\app.f12905ff4736a8425c3463bd6c212410.css" />
-    <Content Include="static\js\app.781a7588293054f49bf8.js" />
-    <Content Include="static\js\manifest.c4151d2eaf6b86b4fde3.js" />
-    <Content Include="static\js\vendor.99303e89811b3abdfb59.js" />
+    <Content Include="static\css\app.86b64b13958c81a4d8bbae48b3097648.css" />
+    <Content Include="static\js\app.e9c8cf98aca28e6f3d89.js" />
+    <Content Include="static\js\manifest.9c8b3b3ee1318b0a83b4.js" />
+    <Content Include="static\js\vendor.0cfc39581d54952bb28c.js" />
     <Content Include="static\photoswipeApi.js" />
     <Content Include="static\PhotoSwipe\default-skin\default-skin.css" />
     <Content Include="static\PhotoSwipe\default-skin\default-skin.png" />
@@ -460,15 +461,16 @@
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
-    <Content Include="static\css\app.f12905ff4736a8425c3463bd6c212410.css.map" />
+    <Content Include="static\css\app.86b64b13958c81a4d8bbae48b3097648.css.map" />
     <Content Include="static\fonts\element-icons.b02bdc1.ttf" />
-    <Content Include="static\js\app.781a7588293054f49bf8.js.map" />
-    <Content Include="static\js\manifest.c4151d2eaf6b86b4fde3.js.map" />
-    <Content Include="static\js\vendor.99303e89811b3abdfb59.js.map" />
+    <Content Include="static\js\app.e9c8cf98aca28e6f3d89.js.map" />
+    <Content Include="static\js\manifest.9c8b3b3ee1318b0a83b4.js.map" />
+    <Content Include="static\js\vendor.0cfc39581d54952bb28c.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fonts\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Photo\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

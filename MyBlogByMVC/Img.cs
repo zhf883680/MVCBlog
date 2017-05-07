@@ -16,5 +16,12 @@ namespace MyBlogByMVC
     {
         public int No { get; set; }
         public string Path { get; set; }
+        public string Description { get; set; }
+        public Nullable<System.DateTime> AddTime { get; set; }
+        public Nullable<int> R1 { get; set; }
+        public string R2 { get; set; }
+        public Nullable<int> R3 { get; set; }
+        public Nullable<int> Width { get; set; }
+        public Nullable<int> Height { get; set; }
     }
 }
